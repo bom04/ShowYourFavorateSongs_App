@@ -1,8 +1,10 @@
 package net.skhu;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -38,12 +40,20 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        list = (ListView) findViewById(R.id.listView);
-        personList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.219.102/PHP_connection.php"); //수정 필요
+
+        //list = (ListView) findViewById(R.id.listView);
+        //personList = new ArrayList<HashMap<String, String>>();
+        //getData("http://192.168.219.102/PHP_connection.php"); //수정 필요
     }
-
-
+    public void btnClick(View view) {
+        if (view.getId() == R.id.btn_join) {
+            Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+            startActivity(intent);
+        } else if (view.getId() == R.id.btn_findPw) {
+            Intent intent = new Intent(getApplicationContext(), FindPwActivity.class);
+            startActivity(intent);
+        }
+    }
     protected void showList() {
         try {
             JSONObject jsonObj = new JSONObject(myJSON);
