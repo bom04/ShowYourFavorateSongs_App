@@ -9,4 +9,8 @@
     <string name="text_password2">비밀번호 확인</string>
     <string name="text_nickname">닉네임</string>
     <string name="text_same">중복 확인</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

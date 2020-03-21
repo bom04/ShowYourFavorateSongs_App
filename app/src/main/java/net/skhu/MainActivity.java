@@ -43,8 +43,8 @@ EditText idText;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("tag","시작이야!~");
-        //강의에서 final을 추가시켜
-
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
 
     }
 }
