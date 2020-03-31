@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
         android:ems="10"
-        android:hint="@android:string/search_go"
+        android:hint="제목이나 가수 입력"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
         android:onClick="btnClick"
-        android:text="Button"
+        android:text="검색"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/searching"
         app:layout_constraintTop_toTopOf="parent" />

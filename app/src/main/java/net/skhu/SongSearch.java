@@ -1,5 +1,8 @@
 package net.skhu;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -15,13 +18,18 @@ import java.net.URL;
 
 public class SongSearch  extends AsyncTask<String,String,String> {
     public static final String tag="myTag";
+    public String[] searchingResult;
+    public Context context;
 
+    public SongSearch(Context context){
+        this.context=context;
+    }
     @Override
     protected String doInBackground(String... arg0) {
         try {
             String singer = (String) arg0[0];
             String link = "http://192.168.219.104:80/songList.php?singer=" + singer;
-
+            Log.d("tag","가수:"+singer);
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -47,16 +55,21 @@ public class SongSearch  extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result){
+        super.onPostExecute(result);
         Log.d("tag", "result:"+result);
         if(result.equalsIgnoreCase("song not found")) {
             Log.d("tag", "노래 검색 결과 없음");
         } else {
             Log.d("tag", "노래 있음!");
-            String[] array=result.split("/");
-            for(int i=0;i<array.length;i++) {
-                Log.d("tag", array[i]+"\n");
+            searchingResult=result.split("/");
+            for(int i=0;i<searchingResult.length;i++) {
+                Log.d("tag", searchingResult[i]+"\n");
             }
         }
+        Intent intent = new Intent(context, SearchingSongViewActivity.class);
+                //,SearchingSongViewActivity.class);
+        intent.putExtra("result",searchingResult); /*송신*/
+        context.startActivity(intent);
+        ((Activity)context).finish();
     }
-
 }

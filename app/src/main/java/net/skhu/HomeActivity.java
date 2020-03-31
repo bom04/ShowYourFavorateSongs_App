@@ -40,7 +40,12 @@ public class HomeActivity extends AppCompatActivity {
             EditText searchingText = (EditText) findViewById(R.id.searching);
             String searching = searchingText.getText().toString();
             Log.d("tag","검색:"+searching);
-            new SongSearch().execute(searching);
+
+            new SongSearch(this).execute(searching);
+            //Intent intent = new Intent(this, SearchingSongViewActivity.class);
+            //intent.putExtra("result",songSearch.getSearchingResult()); /*송신*/
+            //startActivity(intent);
+
         }
 
     }
